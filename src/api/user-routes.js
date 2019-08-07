@@ -12,8 +12,8 @@ router.get("/", (req, res) => {
 });
 
 //get user by ID
-router.post("/id", (req, res) => {
-    User.prototype.getUserID(req.body.id).then(users => {
+router.get("/:id", (req, res) => {
+    User.prototype.getUserID(req.params.id).then(users => {
         res.send(users);
     }).catch(err => {
         res.send(err);
