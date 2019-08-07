@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
         res.send(err);
     }); 
 });
-
+//
 //get user by ID
 router.get("/:id", (req, res) => {
     User.prototype.getUserID(req.params.id).then(users => {
