@@ -2,14 +2,14 @@
 
 const mysql = require("mysql");
 
-const config1 = {
+const config = {
     host: "localhost",
     port: 3306,
     user: "root",
     password: "butterfly55"
 };
 
-const config = {
+const config1 = {
     host: "eu-cdbr-west-02.cleardb.net",
     port: 3306,
     user: "b954af0c3d0e81",
