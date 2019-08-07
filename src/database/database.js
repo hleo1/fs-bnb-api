@@ -2,11 +2,19 @@
 
 const mysql = require("mysql");
 
-const config = {
+const config1 = {
     host: "localhost",
     port: 3306,
     user: "root",
     password: "butterfly55"
+};
+
+const config = {
+    host: "eu-cdbr-west-02.cleardb.net",
+    port: 3306,
+    user: "b954af0c3d0e81",
+    password: "fb409759",
+    database: "heroku_375ce2b690d04ff"
 };
 
 var connection = mysql.createConnection(config);
