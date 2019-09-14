@@ -13,7 +13,7 @@ module.exports = class Booking {
 
     getBookings(){
         return new Promise ((resolve, reject) => {
-            mysqlConn.query('SELECT * FROM heroku_375ce2b690d04ff.bookings', (err,res)  =>  {
+            mysqlConn.query('SELECT * FROM fs_bnb.bookings', (err,res)  =>  {
                 if (err){
                     reject(err)
                 }else{
@@ -24,7 +24,19 @@ module.exports = class Booking {
     }
     getBookingbyID(id){
         return new Promise ((resolve, reject) => {
-            mysqlConn.query('SELECT * FROM heroku_375ce2b690d04ff.listings WHERE id = ?', id, (err,res)  =>  {
+            mysqlConn.query('SELECT * FROM fs_bnb.listings WHERE id = ?', id, (err,res)  =>  {
+                if (err){
+                    reject(err)
+                }else{
+                    resolve(res)
+                }
+            })
+        });
+    }
+
+    getBookingbyUserID(id) {
+        return new Promise ((resolve, reject) => {
+            mysqlConn.query('SELECT * FROM fs_bnb.bookings WHERE user_id = ?', id, (err,res)  =>  {
                 if (err){
                     reject(err)
                 }else{
@@ -36,7 +48,7 @@ module.exports = class Booking {
 
     getMaxID(){
         return new Promise ((resolve, reject) => {
-            mysqlConn.query('select * from heroku_375ce2b690d04ff.bookings ORDER BY id DESC LIMIT 1', id, (err,res)  =>  {
+            mysqlConn.query('select * from fs_bnb.bookings ORDER BY id DESC LIMIT 1', id, (err,res)  =>  {
                 if (err){
                     reject(err)
                 }else{

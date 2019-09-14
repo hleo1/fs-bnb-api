@@ -16,7 +16,7 @@ module.exports = class Listing{
 
     getListings(){
         return new Promise ((resolve, reject) => {
-            mysqlConn.query('SELECT * FROM heroku_375ce2b690d04ff.listings', (err,res)  =>  {
+            mysqlConn.query('SELECT * FROM fs_bnb.listings', (err,res)  =>  {
                 if (err){
                     reject(err)
                 }else{
@@ -27,7 +27,7 @@ module.exports = class Listing{
     }
 getListingsByID(id){
     return new Promise ((resolve, reject) => {
-        mysqlConn.query('SELECT * FROM heroku_375ce2b690d04ff.listings WHERE id = ?', id, (err,res)  =>  {
+        mysqlConn.query('SELECT * FROM fs_bnb.listings WHERE id = ?', id, (err,res)  =>  {
             if (err){
                 reject(err)
             }else{
@@ -39,7 +39,7 @@ getListingsByID(id){
 
 getListingsbyProviderID(id){
     return new Promise ((resolve, reject) => {
-        mysqlConn.query('SELECT * FROM heroku_375ce2b690d04ff.listings WHERE provider_id = ?', id, (err,res)  =>  {
+        mysqlConn.query('SELECT * FROM fs_bnb.listings WHERE provider_id = ?', id, (err,res)  =>  {
             if (err){
                 reject(err)
             }else{
@@ -51,7 +51,7 @@ getListingsbyProviderID(id){
 
 getListingsID(id){
         return new Promise ((resolve, reject) => {
-            mysqlConn.query('SELECT * FROM heroku_375ce2b690d04ff.listings WHERE id = ?', id, (err,res)  =>  {
+            mysqlConn.query('SELECT * FROM fs_bnb.listings WHERE id = ?', id, (err,res)  =>  {
                 if (err){
                     reject(err)
                 }else{
@@ -63,7 +63,7 @@ getListingsID(id){
 
     createListing(newListingDetails){
         return new Promise ((resolve, reject) => {
-            mysqlConn.query("INSERT INTO `heroku_375ce2b690d04ff`.`listings` set ?", newListingDetails, (err,res)  =>  {
+            mysqlConn.query("INSERT INTO `fs_bnb`.`listings` set ?", newListingDetails, (err,res)  =>  {
                 if (err){
                     reject(err)
                 }else{
@@ -88,7 +88,7 @@ getListingsID(id){
 //delete Listing by ID
     deleteListing(id){
         return new Promise ((resolve, reject) => {
-            mysqlConn.query('DELETE FROM heroku_375ce2b690d04ff.listings WHERE id = ?', id, (err,res)  =>  {
+            mysqlConn.query('DELETE FROM fs_bnb.listings WHERE id = ?', id, (err,res)  =>  {
                 if (err){
                     reject(err)
                 }else {
@@ -101,7 +101,7 @@ getListingsID(id){
     createBooking(details, listingID){
         const array = new Booking (details, listingID)
         return new Promise ((resolve, reject) => {
-            mysqlConn.query("INSERT INTO `heroku_375ce2b690d04ff`.`bookings` set ?", array, (err,res)  =>  {
+            mysqlConn.query("INSERT INTO `fs_bnb`.`bookings` set ?", array, (err,res)  =>  {
                 if (err){
                     reject(err)
                 }else{

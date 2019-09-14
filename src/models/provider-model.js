@@ -10,7 +10,7 @@ module.exports = class Provider{
 
     getProviders(){
         return new Promise ((resolve, reject) => {
-            mysqlConn.query('SELECT * FROM heroku_375ce2b690d04ff.providers', (err,res)  =>  {
+            mysqlConn.query('SELECT * FROM fs_bnb.providers', (err,res)  =>  {
                 if (err){
                     reject(err)
                 }else{
@@ -21,7 +21,7 @@ module.exports = class Provider{
     }
     getProviderbyID(ID){
         return new Promise ((resolve, reject) => {
-            mysqlConn.query('SELECT * FROM heroku_375ce2b690d04ff.providers WHERE id = ?', ID, (err,res)  =>  {
+            mysqlConn.query('SELECT * FROM fs_bnb.providers WHERE id = ?', ID, (err,res)  =>  {
                 if (err){
                     reject(err)
                 }else{
@@ -33,11 +33,11 @@ module.exports = class Provider{
     
     createProvider(provider){
         return new Promise ((resolve, reject) => {
-            mysqlConn.query("INSERT INTO `heroku_375ce2b690d04ff`.`providers` set ?", provider, (err,res)=>  {
+            mysqlConn.query("INSERT INTO `fs_bnb`.`providers` set ?", provider, (err,res)=>  {
                 if (err){
                     reject(err)
                 }else{
-                    mysqlConn.query('SELECT * FROM heroku_375ce2b690d04ff.providers', (err,res)  =>  {
+                    mysqlConn.query('SELECT * FROM fs_bnb.providers', (err,res)  =>  {
                         if (err){
                             reject(err);
                         }else{
@@ -51,7 +51,7 @@ module.exports = class Provider{
     //update user by ID
     updateUser(user){
         return new Promise ((resolve, reject) => {
-            mysqlConn.query('SELECT * FROM heroku_375ce2b690d04ff.users', (err,res)  =>  {
+            mysqlConn.query('SELECT * FROM fs_bnb.users', (err,res)  =>  {
                 if (err){
                     reject(err)
                 }else{
@@ -65,12 +65,12 @@ module.exports = class Provider{
         const id = user.id;
         console.log(id);
         return new Promise ((resolve, reject) => {
-            let string = "DELETE FROM `heroku_375ce2b690d04ff`.`users` WHERE (`id` = " +`'${user.id}');`
+            let string = "DELETE FROM `fs_bnb`.`users` WHERE (`id` = " +`'${user.id}');`
             mysqlConn.query(string, (err,res)  =>  {
                 if (err){
                     reject(err)
                 }else{
-                    mysqlConn.query('SELECT * FROM heroku_375ce2b690d04ff.users', (err,res)  =>  {
+                    mysqlConn.query('SELECT * FROM fs_bnb.users', (err,res)  =>  {
                         if (err){
                             reject(err)
                         }else{
